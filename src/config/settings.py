@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third party apps
+    "django_extensions",
     "rest_framework",
     # local apps
     "blog.apps.BlogConfig",
