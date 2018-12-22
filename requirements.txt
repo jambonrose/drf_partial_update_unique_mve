@@ -6,7 +6,7 @@ cfgv==1.1.0
 decorator==4.3.0
 Django==2.1.3
 django-extensions==2.1.4
-git+https://github.com/encode/django-rest-framework.git
+git+https://github.com/jambonrose/django-rest-framework.git@fix_6341_date_validator_uses_instance
 identify==1.1.7
 importlib-metadata==0.7
 ipython==7.2.0
