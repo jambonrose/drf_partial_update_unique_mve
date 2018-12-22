@@ -1,36 +1,20 @@
 """ModelSerializers demonstrating problem for MVE"""
-from rest_framework.serializers import (
-    CharField,
-    DateField,
-    IntegerField,
-    Serializer,
-    SlugField,
-)
-from rest_framework.validators import UniqueForMonthValidator
+from rest_framework.serializers import ModelSerializer
 
-from .models import UniquePost
+from .models import Post, UniquePost
 
 
-class PostSerializer(Serializer):
+class PostSerializer(ModelSerializer):
     """Working serializer"""
 
-    id = IntegerField(label="ID", read_only=True)
-    title = CharField(max_length=63)
-    slug = SlugField(max_length=63)
-    pub_date = DateField(required=False)
+    class Meta:
+        model = Post
+        fields = "__all__"
 
 
-class UniquePostSerializer(Serializer):
+class UniquePostSerializer(ModelSerializer):
     """Serializer that will fail to update partially"""
 
-    id = IntegerField(label="ID", read_only=True)
-    title = CharField(max_length=63)
-    slug = SlugField(max_length=63)
-    pub_date = DateField(required=False)
-
     class Meta:
-        validators = [
-            UniqueForMonthValidator(
-                queryset=UniquePost.objects.all(), field="slug", date_field="pub_date"
-            )
-        ]
+        model = UniquePost
+        fields = "__all__"
