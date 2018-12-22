@@ -26,7 +26,7 @@ class SerializersTests(TestCase):
         )
         self.assertTrue(s_post.is_valid(), msg=s_post.errors)
         s_post.save()
-        post = Post.objects.get(slug="slug")
+        post = UniquePost.objects.get(slug="slug")
         self.assertEqual("second", post.title)
 
     # def test_unique_post_partial_failure(self):
